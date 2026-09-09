@@ -538,16 +538,6 @@ void PauseManager::exec()
     }
 }
 
-bool Result2D::getDrawFlag()
-{
-    return mDrawFlag;
-}
-
-void Result2D::setDrawFlag(bool drawFlag)
-{
-    mDrawFlag = drawFlag;
-}
-
 bool PauseManager::tstPause()
 {
     return mIsPause;

@@ -84,8 +84,8 @@ public:
     static void setGPClr(); // 0x80150804
     bool getAnmEnd(); // 0x80150830
 
-    static bool getDrawFlag();
-    static void setDrawFlag(bool drawFlag);
+    static bool getDrawFlag() { return mDrawFlag; }
+    static void setDrawFlag(bool drawFlag) { mDrawFlag = drawFlag; };
 
     static const u64 mSetWordLineTag[9]; // 0x8036ec18
     static const u64 mResultLayoutTag[11]; // 0x8036ec60
