@@ -102,9 +102,22 @@ namespace JGeometry {
             y += other.y;
         }
 
-        void scale(T scalar) {
+        void sub(const TVec2<T> &other)
+        {
+            x -= other.x;
+            y -= other.y;
+        }
+
+        void scale(T scalar)
+        {
             x *= scalar;
             y *= scalar;
+        }
+
+        void div(T divisor)
+        {
+            x /= divisor;
+            y /= divisor;
         }
 
         void zero() { x = y = 0; }
@@ -130,6 +143,70 @@ namespace JGeometry {
         // TVec2<T> adding(const TVec2<T>& other) { return TVec2<T>(x + other.x, y + other.y); }
 
         bool isAbove(const TVec2<T> &other) const { return (x >= other.x) && (y >= other.y) ? true : false; }
+
+        // operators
+
+        // TODO: Odd return type (reference to local variable), but improves match percentage.
+        const TVec2 &operator+(const TVec2 &operand) const
+        {
+            TVec2 result(*this);
+            result.x += operand.x;
+            result.y += operand.y;
+            return result;
+        }
+
+        TVec2 operator-(const TVec2 &operand) const
+        {
+            TVec2 result(*this);
+            result.x -= operand.x;
+            result.y -= operand.y;
+            return result;
+        }
+
+        TVec2 operator*(f32 scalar) const
+        {
+            TVec2 result(*this);
+            result.x *= scalar;
+            result.y *= scalar;
+            return result;
+        }
+
+        // TODO: Odd return type (reference to local variable), but improves match percentage.
+        const TVec2 &operator/(f32 divisor) const
+        {
+            TVec2 result(*this);
+            result.x /= divisor;
+            result.y /= divisor;
+            return result;
+        }
+
+        TVec2 &operator+=(const TVec2 &operand)
+        {
+            x += operand.x;
+            y += operand.y;
+            return *this;
+        }
+
+        TVec2 &operator-=(const TVec2 &operand)
+        {
+            x -= operand.x;
+            y -= operand.y;
+            return *this;
+        }
+
+        TVec2 &operator*=(f32 scalar)
+        {
+            x *= scalar;
+            y *= scalar;
+            return *this;
+        }
+
+        TVec2 &operator/=(f32 divisor)
+        {
+            x /= divisor;
+            y /= divisor;
+            return *this;
+        }
 
         T x, y;
     };
